@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { FaCloud, FaCloudShowersHeavy, FaCloudSunRain } from "react-icons/fa";
+import { FaCloud, FaCloudRain } from "react-icons/fa";
+import { MdSunny } from "react-icons/md";
 import { IoThunderstorm } from "react-icons/io5";
 
 const StyledHourItem = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  /* background-color: var(--cape-cod); */
   border-radius: var(--border-radius-20);
   color: white;
 
@@ -24,17 +24,23 @@ const StyledHourItem = styled.div`
 `;
 
 function HourItem({ hour }) {
-  const { time, temp_c } = hour;
+  const {
+    time,
+    temp_c,
+    condition: { text },
+  } = hour;
   const newTime = new Date(time).toTimeString().slice(0, 5);
-  const temp = Math.floor(temp_c);
+  const hourNow = new Date().getHours();
+  const hourForecast = new Date(time).getHours();
   return (
     <StyledHourItem>
-      <span>{newTime}</span>
+      <span>{hourNow === hourForecast ? "Now" : newTime}</span>
       <span>{temp_c}°</span>
-      {temp <= 26 && <IoThunderstorm />}
-      {temp > 26 && temp <= 29 && <FaCloudShowersHeavy />}
-      {temp > 29 && temp <= 31 && <FaCloudSunRain />}
-      {temp > 31 && <FaCloud />}
+      {text === "Sunny" && <MdSunny />}
+      {text === "Patchy rain nearby" && <FaCloudRain />}
+      {text === "Clear " && <FaCloud />}
+      {text === "Partly Cloudy " && <FaCloud />}
+      {text === "Thundery outbreaks in nearby" && <IoThunderstorm />}
     </StyledHourItem>
   );
 }

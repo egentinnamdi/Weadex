@@ -13,20 +13,30 @@ const StyledLoader = styled.div`
 `;
 
 function Loader({ children }) {
-  const { isLoading, error, data } = useWeather();
+  const { isLoading, error, data, isRefetching, input, numOfDays } =
+    useWeather();
 
-  if (isLoading)
+  if (!input || !numOfDays)
+    return (
+      <StyledLoader>
+        <Message message="Search For A City" />
+      </StyledLoader>
+    );
+  if (isLoading || isRefetching) {
     return (
       <StyledLoader>
         <Spinner />
       </StyledLoader>
     );
-  if (error || data.error)
+  }
+  if (error || data.error) {
+    // console.log(data.error);
     return (
       <StyledLoader>
-        <Message message="Something Went Wrong" />
+        <Message message="There Was An Error" />
       </StyledLoader>
     );
+  }
 
   return <>{children}</>;
 }

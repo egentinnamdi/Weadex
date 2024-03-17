@@ -43,16 +43,17 @@ h3{
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 20px;
   }
-
+  
   ::-webkit-scrollbar-track {
+    border-radius: var(--border-radius-10);
     background: var(--pink-swan);
   }
-
+  
   ::-webkit-scrollbar-thumb {
     background: var(--cape-cod);
-    border-radius: 6px;
+    border-radius: var(--border-radius-10);
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -88,7 +89,6 @@ const forecastList = css`
   background-color: var(--mirage-transparent);
   grid-column: span 2;
   border-radius: var(--border-radius-10);
-  overflow-x: auto;
   padding: 20px;
   & div:first-child {
     display: flex;
@@ -98,5 +98,11 @@ const forecastList = css`
   }
 `;
 
+const center = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export default GlobalStyles;
-export { overviewCSS, forecastList };
+export { overviewCSS, forecastList, center };

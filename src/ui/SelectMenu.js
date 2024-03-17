@@ -14,26 +14,24 @@ const StyledSelectMenu = styled.select`
 `;
 
 function SelectMenu() {
-  const [selectOption] = useState([
-    "Select Number Of Forecast ",
-    3,
-    5,
-    7,
-    10,
-    14,
-  ]);
-  const { numOfDays, setNumOfDays, refetch } = useWeather();
+  const [selectOption] = useState([0, 3, 5, 7, 10, 14]);
+  const queryClient = useQueryClient();
+  const { numOfDays, setNumOfDays, refetch, setIsRefetching } = useWeather();
 
   return (
     <StyledSelectMenu
       value={numOfDays}
-      onInput={(e) => {
-        setNumOfDays(e.target.value);
+      onChange={async (e) => {
+        await setNumOfDays(e.target.value);
+        await queryClient.cancelQueries({ queryKey: ["weatherData"] });
+        setIsRefetching(true);
+        await refetch();
+        setIsRefetching(false);
       }}
     >
       {selectOption.map((option) => (
         <option value={option} key={option}>
-          {option} Days
+          {option === 0 ? "Select Number Of" : option} Days
         </option>
       ))}
     </StyledSelectMenu>

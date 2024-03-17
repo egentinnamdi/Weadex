@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useWeather } from "../contexts/WeatherContext";
 import SelectMenu from "./SelectMenu";
+import { useQueryClient } from "@tanstack/react-query";
 
 const StyledSearchBar = styled.div`
   display: flex;
@@ -22,17 +23,22 @@ const StyledSearch = styled.input`
 `;
 
 function SearchBar() {
-  const { input, setInput } = useWeather();
+  const queryClient = useQueryClient();
+  const { input, setInput, refetch, setIsRefetching } = useWeather();
 
   return (
     <StyledSearchBar>
       <StyledSearch
         type="text"
-        onChange={(e) => {
-          setInput(e.target.value);
+        onChange={async (e) => {
+          await setInput(e.target.value);
+          await queryClient.cancelQueries({ queryKey: ["weatherData"] });
+          setIsRefetching(true);
+          await refetch();
+          setIsRefetching(false);
         }}
         value={input}
-        placeholder="City Name"
+        placeholder="Search"
       />
       <SelectMenu />
     </StyledSearchBar>

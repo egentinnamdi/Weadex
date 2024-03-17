@@ -17,7 +17,6 @@ function Humidity() {
   const { dewpoint_c } = data.forecast.forecastday
     .at(0)
     .hour.at(new Date().getHours());
-  console.log(dewpoint_c);
 
   return (
     <StyledHumidity>

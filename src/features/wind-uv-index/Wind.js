@@ -17,9 +17,12 @@ const StyledWind = styled.div`
   & div:nth-child(3) {
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
-    width: 50%;
-    padding-bottom: 10px;
+    gap: 0.8rem;
+    width: 60%;
+    padding-bottom: 15px;
+  }
+  & div:nth-child(2) {
+    border-bottom: solid 2px var(--bali-hai);
   }
   .wind > span,
   .gust > span {
@@ -27,9 +30,17 @@ const StyledWind = styled.div`
     font-weight: 600;
     padding-bottom: 10px;
   }
-  .wind p {
+  .wind p,
+  .gust p {
     display: flex;
     flex-direction: column;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .wind p span:nth-child(1),
+  .gust p span:nth-child(1) {
+    text-transform: uppercase;
+    color: var(--bali-hai);
   }
 `;
 
@@ -54,7 +65,7 @@ function Wind() {
         <span>{gust_mph}</span>
         <p>
           <span>mph</span>
-          <span>Gust</span>
+          <span>Gusts</span>
         </p>
       </div>
     </StyledWind>

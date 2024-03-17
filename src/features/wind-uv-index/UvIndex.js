@@ -62,7 +62,6 @@ function UvIndex() {
   const lowUvHour = lowUvHours.find(
     (hour) => new Date(hour.time).getHours() > new Date().getHours()
   );
-  console.log(lowUvHour);
   return (
     <>
       <StyledUvIndex>

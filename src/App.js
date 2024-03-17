@@ -1,20 +1,13 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import GlobalStyles from "./styles/GlobalStyles";
-import Dashboard from "./ui/Dashboard";
-import Stats from "./ui/Stats";
-import styled from "styled-components";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import WeatherProvider from "./contexts/WeatherContext";
+import GlobalStyles from "./styles/GlobalStyles";
 
-const StyledApp = styled.div`
-  display: grid;
-  grid-template: auto / 0.7fr 1fr;
-  min-height: 85vh;
-  background-color: var(--mirage-transparent);
-  gap: 1.2rem;
-  padding: 30px;
-  border-radius: var(--border-radius-20);
-`;
+import WeatherProvider from "./contexts/WeatherContext";
+import Profile from "./pages/Profile";
+import AppLayout from "./pages/AppLayout";
+import PageNotFound from "./pages/PageNotFound";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -28,10 +21,14 @@ function App() {
       <WeatherProvider>
         <ReactQueryDevtools />
         <GlobalStyles />
-        <StyledApp>
-          <Dashboard />
-          <Stats />
-        </StyledApp>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Navigate replace to="profile" />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/weadex" element={<AppLayout />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
       </WeatherProvider>
     </QueryClientProvider>
   );

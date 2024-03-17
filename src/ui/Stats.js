@@ -3,9 +3,6 @@ import HourList from "../features/forecast/HourList";
 import Wind from "../features/wind-uv-index/Wind";
 import UvIndex from "../features/wind-uv-index/UvIndex";
 import DayList from "../features/forecast/DayList";
-import Loader from "./Loader";
-import { useWeather } from "../contexts/WeatherContext";
-// import { LuCalendar } from "react-icons/lu";
 
 const StyledStats = styled.section`
   display: grid;
@@ -15,16 +12,13 @@ const StyledStats = styled.section`
 `;
 
 function Stats() {
-  const { refetch } = useWeather();
   return (
-    <Loader>
-      <StyledStats onKeyDown={(e) => e.code === "Enter" && refetch()}>
-        <HourList />
-        <DayList />
-        <UvIndex />
-        <Wind />
-      </StyledStats>
-    </Loader>
+    <StyledStats>
+      <HourList />
+      <DayList />
+      <UvIndex />
+      <Wind />
+    </StyledStats>
   );
 }
 

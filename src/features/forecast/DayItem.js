@@ -1,9 +1,8 @@
-import styled from "styled-components";
-import { FaCloud } from "react-icons/fa";
-import { FaCloudSunRain } from "react-icons/fa";
-import { FaCloudShowersHeavy } from "react-icons/fa";
-import { IoThunderstorm } from "react-icons/io5";
 import { useState } from "react";
+import styled from "styled-components";
+import { FaCloud, FaCloudRain } from "react-icons/fa";
+import { MdSunny } from "react-icons/md";
+import { IoThunderstorm } from "react-icons/io5";
 
 const StyledDayItem = styled.div`
   display: flex;
@@ -33,9 +32,11 @@ function DayItem({ day }) {
   const [daysOfWeek] = useState(days);
   const {
     date,
-    day: { avgtemp_c },
+    day: {
+      avgtemp_c,
+      condition: { text },
+    },
   } = day;
-  const avgTemp = Math.floor(avgtemp_c);
   const dayOfWeek = new Date(date).getDay();
   const today = new Date().getDay();
 
@@ -44,10 +45,11 @@ function DayItem({ day }) {
       <span>{today === dayOfWeek ? "Today" : daysOfWeek.at(dayOfWeek)}</span>
       <span>{date.slice(5)}</span>
       <span>{avgtemp_c}°</span>
-      {avgTemp <= 26 && <IoThunderstorm />}
-      {avgTemp > 26 && avgTemp <= 29 && <FaCloudShowersHeavy />}
-      {avgTemp > 29 && avgTemp <= 31 && <FaCloudSunRain />}
-      {avgTemp > 31 && <FaCloud />}
+      {text === "Sunny" && <MdSunny />}
+      {text === "Patchy rain nearby" && <FaCloudRain />}
+      {text === "Clear " && <FaCloud />}
+      {text === "Partly Cloudy" && <FaCloud />}
+      {text === "Thundery outbreaks in nearby" && <IoThunderstorm />}
     </StyledDayItem>
   );
 }

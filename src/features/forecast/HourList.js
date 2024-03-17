@@ -12,6 +12,7 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1.2rem;
+  overflow-x: auto;
 `;
 
 function ForecastList() {

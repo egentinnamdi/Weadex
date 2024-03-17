@@ -6,25 +6,23 @@ import DayItem from "./DayItem";
 
 const StyledDayList = styled.div`
   ${forecastList}
-  
 `;
 
 const Row = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 1.2rem;
+  overflow-x: auto;
 `;
 
 function DayList() {
   const { data, numOfDays } = useWeather();
 
   const DayForecast = data.forecast.forecastday;
-
   return (
     <StyledDayList>
       <div>
         <h3>
-          <LuCalendar /> {numOfDays}-Day forecast
+          <LuCalendar /> {+numOfDays || 1}-Day forecast
         </h3>
       </div>
       <Row>

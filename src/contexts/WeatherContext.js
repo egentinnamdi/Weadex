@@ -5,13 +5,13 @@ import { useQuery } from "@tanstack/react-query";
 const WeatherContext = createContext(null);
 
 function WeatherProvider({ children }) {
-  const [input, setInput] = useState("lagos");
-  const [numOfDays, setNumOfDays] = useState(3);
+  const [input, setInput] = useState("");
+  const [numOfDays, setNumOfDays] = useState(0);
+  const [isRefetching, setIsRefetching] = useState(false);
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["weatherData"],
-    queryFn: () => getData(input, numOfDays),
+    queryFn: input && numOfDays ? () => getData(input, numOfDays) : null,
   });
-
   const value = {
     data,
     isLoading,
@@ -21,6 +21,8 @@ function WeatherProvider({ children }) {
     refetch,
     numOfDays,
     setNumOfDays,
+    isRefetching,
+    setIsRefetching,
   };
   return (
     <WeatherContext.Provider value={value}>{children}</WeatherContext.Provider>
