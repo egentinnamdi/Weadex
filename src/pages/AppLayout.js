@@ -4,6 +4,7 @@ import Loader from "../ui/Loader";
 import Stats from "../ui/Stats";
 
 const StyledAppLayout = styled.div`
+  /* @media () display: grid; */
   display: grid;
   grid-template: auto / 0.7fr 1fr;
   min-height: 85vh;

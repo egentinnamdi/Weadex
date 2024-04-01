@@ -23,8 +23,8 @@ function App() {
         <GlobalStyles />
         <BrowserRouter>
           <Routes>
-            <Route index element={<Navigate replace to="profile" />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route index element={<Navigate replace to="weadex" />} />
+            {/* <Route path="/profile" element={<Profile />} /> */}
             <Route path="/weadex" element={<AppLayout />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
