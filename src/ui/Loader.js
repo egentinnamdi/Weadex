@@ -30,7 +30,6 @@ function Loader({ children }) {
     );
   }
   if (error || data.error) {
-    // console.log(data.error);
     return (
       <StyledLoader>
         <Message message="There Was An Error" />
