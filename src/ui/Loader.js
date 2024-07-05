@@ -13,8 +13,10 @@ const StyledLoader = styled.div`
 `;
 
 function Loader({ children }) {
-  const { isLoading, error, data, isRefetching, input, numOfDays } =
-    useWeather();
+  const { isLoading, isRefetching, input, numOfDays } = useWeather();
+  // try {
+  //   if (!error || !data) throw new Error(" something went wrong");
+  //   console.log(data);
 
   if (!input || !numOfDays)
     return (
@@ -29,13 +31,13 @@ function Loader({ children }) {
       </StyledLoader>
     );
   }
-  if (error || data.error) {
-    return (
-      <StyledLoader>
-        <Message message="There Was An Error" />
-      </StyledLoader>
-    );
-  }
+  // if (data.error) {
+  //   return (
+  //     <StyledLoader>
+  //       <Message message="There Was An Error" />
+  //     </StyledLoader>
+  //   );
+  // }
 
   return <>{children}</>;
 }
