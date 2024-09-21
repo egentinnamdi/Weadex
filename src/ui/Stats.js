@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import HourList from "../features/forecast/HourList";
 import Wind from "../features/wind-uv-index/Wind";
 import UvIndex from "../features/wind-uv-index/UvIndex";

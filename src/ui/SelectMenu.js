@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useWeather } from "../contexts/WeatherContext";
-import { useQueryClient } from "@tanstack/react-query";
 
 const StyledSelectMenu = styled.select`
   background-color: var(--mirage-transparent);

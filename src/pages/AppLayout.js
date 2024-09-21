@@ -1,7 +1,7 @@
 // import styled from "styled-components";
 import Dashboard from "../ui/Dashboard";
-import Loader from "../ui/Loader";
-import Stats from "../ui/Stats";
+// import Loader from "../ui/Loader";
+// import Stats from "../ui/Stats";
 
 // const StyledAppLayout = styled.div`
 //   /* @media () display: grid; */

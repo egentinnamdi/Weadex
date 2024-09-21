@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useWeather } from "../../contexts/WeatherContext";
-import Spinner from "../../ui/Spinner";
 
 const StyledOverviewMessage = styled.div`
   display: flex;

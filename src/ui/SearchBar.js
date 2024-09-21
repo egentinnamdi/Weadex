@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useWeather } from "../contexts/WeatherContext";
 import SelectMenu from "./SelectMenu";
-import { useQueryClient } from "@tanstack/react-query";
 
 const StyledSearchBar = styled.div`
   display: flex;
@@ -23,7 +22,7 @@ const StyledSearch = styled.input`
 `;
 
 function SearchBar() {
-  const { input, setInput, refetch, setIsRefetching } = useWeather();
+  const { input, setInput } = useWeather();
 
   return (
     <StyledSearchBar>

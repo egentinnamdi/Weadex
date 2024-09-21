@@ -13,7 +13,7 @@ const StyledLoader = styled.div`
 `;
 
 function Loader({ children }) {
-  const { isLoading, isRefetching, input, numOfDays, error, data } =
+  const { isLoading,  input, numOfDays, error, data } =
     useWeather();
   try {
     if (error) throw new Error(error);
