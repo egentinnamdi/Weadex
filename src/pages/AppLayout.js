@@ -17,8 +17,8 @@ import Stats from "../ui/Stats";
 // <StyledAppLayout className="h-screen">
 function AppLayout() {
   return (
-    <div className=" grid place-items-center   p-10  text-pink-swan min-h-screen w-screen">
-      <div className="lg:grid lg:grid-rows-1 lg:grid-cols-[0.7fr_1fr] w-full bg-mirage-transparent h-full gap-5 rounded-xl p-7">
+    <div className=" grid place-items-center   lg:p-10 p-5  text-pink-swan min-h-screen w-screen">
+      <div className="lg:grid lg:grid-rows-1 lg:grid-cols-[0.7fr_1fr] w-full bg-mirage-transparent h-full gap-5 rounded-xl lg:p-7">
       <Dashboard />
       {/* <Loader> */}
         {/* <Stats /> */}
