@@ -15,18 +15,14 @@ const StyledSelectMenu = styled.select`
 
 function SelectMenu() {
   const [selectOption] = useState([0, 3, 5, 7, 10, 14]);
-  const queryClient = useQueryClient();
-  const { numOfDays, setNumOfDays, refetch, setIsRefetching } = useWeather();
+  const { numOfDays, setNumOfDays } = useWeather();
 
   return (
     <StyledSelectMenu
+    className="w-2/4"
       value={numOfDays}
-      onChange={async (e) => {
-        await setNumOfDays(e.target.value);
-        await queryClient.cancelQueries({ queryKey: ["weatherData"] });
-        setIsRefetching(true);
-        await refetch();
-        setIsRefetching(false);
+      onChange={(e) => {
+        setNumOfDays(e.target.value);
       }}
     >
       {selectOption.map((option) => (

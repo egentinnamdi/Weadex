@@ -6,8 +6,7 @@ import Precipitation from "../features/overview/Precipitation";
 import FeelsLike from "../features/overview/FeelsLike";
 
 const StyledOverview = styled.div`
-  display: grid;
-  grid-template: 2fr 1fr 1fr / 1fr 1fr;
+
   border-radius: var(--border-radius-20);
   height: 100%;
   background: linear-gradient(
@@ -25,7 +24,7 @@ const StyledOverview = styled.div`
 
 function Overview() {
   return (
-    <StyledOverview>
+    <StyledOverview className=" lg:grid lg:grid-rows-[2fr_1fr_1fr] lg:grid-cols-2 space-y-6 flex flex-col items-center lg:space-y-0">
       <OverviewMessage />
       <FeelsLike />
       <Precipitation />

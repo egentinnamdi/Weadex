@@ -2,6 +2,7 @@ import styled from "styled-components";
 import SearchBar from "./SearchBar";
 import Overview from "./Overview";
 import Loader from "./Loader";
+import { useWeather } from "../contexts/WeatherContext";
 
 const StyledDashboard = styled.section`
   display: flex;
@@ -11,8 +12,9 @@ const StyledDashboard = styled.section`
 `;
 
 function Dashboard() {
+  const {input}= useWeather()
   return (
-    <StyledDashboard>
+    <StyledDashboard className={`h-full ${ input.length < 3? "lg:col-span-2": ""}`}>
       <SearchBar />
       <Loader>
         <Overview />

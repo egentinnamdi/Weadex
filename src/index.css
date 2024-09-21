@@ -1,7 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"); */
 
-:root {
-  /* CSS HEX */
+/* :root {
+  CSS HEX
   --san-juan: #375075;
   --mirage-opaque: #151922;
   --mirage-transparent: #15192281;
@@ -18,9 +21,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
 
-body {
-  margin: 50px 30px;
-  height: 100vh;
-}
+
+@layer components{
+    body {
+       @apply min-w-full min-h-screen bg-no-repeat ; 
+       background: url("/public/weadex-bg.jpg"); 
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+      font-family: "Montserrat", san-serif;
+    } 
+  }

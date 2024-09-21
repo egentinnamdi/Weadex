@@ -27,27 +27,29 @@ const StyledOverviewMessage = styled.div`
 `;
 
 function OverviewMessage() {
-  const { data, isLoading, error } = useWeather();
+  const { data } = useWeather();
+  try {
+    const { region, country } = data.location;
 
-  if (isLoading) return <Spinner />;
-  if (error) throw new Error(error.message);
+    const {
+      temp_c: temp,
+      condition: { text },
+    } = data.current;
 
-  const { region, country } = data.location;
-
-  const {
-    temp_c: temp,
-    condition: { text },
-  } = data.current;
-
-  return (
+    return (
+      <StyledOverviewMessage>
+        <span>{temp}°C</span>
+        <span>{text}</span>
+        <span>
+          {region}, {country}
+        </span>
+      </StyledOverviewMessage>
+    );
+  } catch (err) {
     <StyledOverviewMessage>
-      <span>{temp}°C</span>
-      <span>{text}</span>
-      <span>
-        {region}, {country}
-      </span>
-    </StyledOverviewMessage>
-  );
+      <span>Location Unavailable</span>
+    </StyledOverviewMessage>;
+  }
 }
 
 export default OverviewMessage;

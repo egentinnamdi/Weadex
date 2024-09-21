@@ -9,21 +9,23 @@ const StyledVisibility = styled.div`
 
 function Visibility() {
   const { data } = useWeather();
-  const { vis_km, vis_miles } = data.current;
 
-  return (
-    <StyledVisibility>
-      <div>
-        <h3>
-          <WiDayFog /> visibility
-        </h3>
-      </div>
-      <div className="content">
-        <span>{vis_miles}mi</span>
-        <span>{vis_km}km</span>
-      </div>
-    </StyledVisibility>
-  );
+    const { vis_km, vis_miles } = data.current;
+
+    return (
+      <StyledVisibility className="w-3/4 lg:w-full text-center lg:text-left" >
+        <div>
+          <h3>
+            <WiDayFog /> visibility
+          </h3>
+        </div>
+        <div className="content">
+          <span>{vis_miles}mi</span>
+          <span>{vis_km}km</span>
+        </div>
+      </StyledVisibility>
+    );
+
 }
 
 export default Visibility;

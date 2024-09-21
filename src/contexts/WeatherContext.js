@@ -6,11 +6,12 @@ const WeatherContext = createContext(null);
 
 function WeatherProvider({ children }) {
   const [input, setInput] = useState("");
-  const [numOfDays, setNumOfDays] = useState(0);
+  const [numOfDays, setNumOfDays] = useState(14);
   const [isRefetching, setIsRefetching] = useState(false);
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["weatherData"],
-    queryFn: input && numOfDays ? () => getData(input, numOfDays) : null,
+    queryKey: ["weatherData", input, numOfDays],
+    queryFn: () =>
+      input.length > 2 && numOfDays ? getData(input, numOfDays) : null,
   });
   const value = {
     data,

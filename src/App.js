@@ -10,7 +10,7 @@ import PageNotFound from "./pages/PageNotFound";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 0,
+      staleTime: 5000,
     },
   },
 });

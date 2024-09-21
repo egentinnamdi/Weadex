@@ -23,19 +23,15 @@ const StyledSearch = styled.input`
 `;
 
 function SearchBar() {
-  const queryClient = useQueryClient();
   const { input, setInput, refetch, setIsRefetching } = useWeather();
 
   return (
     <StyledSearchBar>
       <StyledSearch
+      className="lg:w-2/4 w-3/4"
         type="text"
-        onChange={async (e) => {
-          await setInput(e.target.value);
-          await queryClient.cancelQueries({ queryKey: ["weatherData"] });
-          setIsRefetching(true);
-          await refetch();
-          setIsRefetching(false);
+        onChange={(e) => {
+          setInput(e.target.value);
         }}
         value={input}
         placeholder="Search"

@@ -15,7 +15,7 @@ const Row = styled.div`
   overflow-x: auto;
 `;
 
-function ForecastList() {
+function HourList() {
   const { data } = useWeather();
 
   const hour = new Date().getHours();
@@ -37,4 +37,4 @@ function ForecastList() {
   );
 }
 
-export default ForecastList;
+export default HourList;

@@ -13,24 +13,25 @@ const StyledHumidity = styled.div`
 
 function Humidity() {
   const { data } = useWeather();
-  const { humidity } = data.current;
-  const { dewpoint_c } = data.forecast.forecastday
-    .at(0)
-    .hour.at(new Date().getHours());
 
-  return (
-    <StyledHumidity>
-      <div>
-        <h3>
-          <TbDroplets /> humidity
-        </h3>
-      </div>
-      <div className="content">
-        <span>{humidity}%</span>
-        <span>The dew point is {dewpoint_c}°C right now</span>
-      </div>
-    </StyledHumidity>
-  );
+    const { humidity } = data.current;
+    const { dewpoint_c } = data.forecast.forecastday
+      .at(0)
+      .hour.at(new Date().getHours());
+
+    return (
+      <StyledHumidity className="w-3/4 lg:w-full text-center lg:text-left">
+        <div>
+          <h3>
+            <TbDroplets /> humidity
+          </h3>
+        </div>
+        <div className="content">
+          <span>{humidity}%</span>
+          <span>The dew point is {dewpoint_c}°C right now</span>
+        </div>
+      </StyledHumidity>
+    );
 }
 
 export default Humidity;

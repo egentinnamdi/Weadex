@@ -13,32 +13,39 @@ const StyledLoader = styled.div`
 `;
 
 function Loader({ children }) {
-  const { isLoading, isRefetching, input, numOfDays } = useWeather();
-  // try {
-  //   if (!error || !data) throw new Error(" something went wrong");
-  //   console.log(data);
+  const { isLoading, isRefetching, input, numOfDays, error, data } =
+    useWeather();
+  try {
+    if (error) throw new Error(error);
 
-  if (!input || !numOfDays)
+    if (!input.length > 2 && !numOfDays)
+      return (
+        <StyledLoader>
+          <Message message="Search For A City" />
+        </StyledLoader>
+      );
+    if (isLoading) {
+      return (
+        <StyledLoader>
+          <Spinner />
+        </StyledLoader>
+      );
+    }
+    if (data === null || data.error) {
+      return (
+        <StyledLoader>
+          <Message message="Search For A City" />
+        </StyledLoader>
+      );
+    }
+  } catch (err) {
+    console.log(err);
     return (
       <StyledLoader>
-        <Message message="Search For A City" />
-      </StyledLoader>
-    );
-  if (isLoading || isRefetching) {
-    return (
-      <StyledLoader>
-        <Spinner />
+        <Message message={err.message} />
       </StyledLoader>
     );
   }
-  // if (data.error) {
-  //   return (
-  //     <StyledLoader>
-  //       <Message message="There Was An Error" />
-  //     </StyledLoader>
-  //   );
-  // }
-
   return <>{children}</>;
 }
 

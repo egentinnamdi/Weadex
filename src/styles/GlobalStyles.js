@@ -28,14 +28,6 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
-body {
-    min-height: 100vh;
-    padding: 50px;
-    background: url("../../bg-image.avif");
-    background-repeat: no-repeat;
-    color: var(--pink-swan);
-    font-family: "Montserrat", san-serif;
-}
 
 h3{
   font-weight: 500;
