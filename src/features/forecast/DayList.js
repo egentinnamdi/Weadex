@@ -19,7 +19,7 @@ function DayList() {
 
   const DayForecast = data.forecast.forecastday;
   return (
-    <StyledDayList>
+    <StyledDayList >
       <div>
         <h3>
           <LuCalendar /> {+numOfDays || 1}-Day forecast

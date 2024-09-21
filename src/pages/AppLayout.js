@@ -1,7 +1,6 @@
 // import styled from "styled-components";
 import Dashboard from "../ui/Dashboard";
-// import Loader from "../ui/Loader";
-// import Stats from "../ui/Stats";
+import Stats from "../ui/Stats";
 
 // const StyledAppLayout = styled.div`
 //   /* @media () display: grid; */
@@ -17,12 +16,10 @@ import Dashboard from "../ui/Dashboard";
 // <StyledAppLayout className="h-screen">
 function AppLayout() {
   return (
-    <div className=" grid place-items-center   lg:p-10 p-5  text-pink-swan min-h-screen w-screen">
-      <div className="lg:grid lg:grid-rows-1 lg:grid-cols-[0.7fr_1fr] w-full bg-mirage-transparent h-full gap-5 rounded-xl lg:p-7">
+    <div className="overflow-auto  grid place-items-center   lg:p-10 p-5  text-pink-swan min-h-screen w-screen ">
+      <div className="lg:grid lg:grid-rows-1 lg:grid-cols-[0.7fr_1fr] w-full bg-mirage-transparent min-h-screen gap-5 rounded-xl lg:p-7 pt-5 px-2 lg:space-y-0 space-y-5 ">
       <Dashboard />
-      {/* <Loader> */}
-        {/* <Stats /> */}
-      {/* </Loader> */}
+        <Stats />
     </div> </div>
   );
 }

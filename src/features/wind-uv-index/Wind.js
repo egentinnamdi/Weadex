@@ -48,7 +48,7 @@ function Wind() {
   const { data } = useWeather();
   const { wind_mph, gust_mph } = data.current;
   return (
-    <StyledWind>
+    <StyledWind >
       <div>
         <h3>
           <FaWind /> wind

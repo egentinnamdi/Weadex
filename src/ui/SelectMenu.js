@@ -18,14 +18,14 @@ function SelectMenu() {
 
   return (
     <StyledSelectMenu
-    className="w-2/4"
+    className="w-2/4 text-sm"
       value={numOfDays}
       onChange={(e) => {
         setNumOfDays(e.target.value);
       }}
     >
       {selectOption.map((option) => (
-        <option value={option} key={option}>
+        <option value={option} key={option} >
           {option === 0 ? "Select Number Of" : option} Days
         </option>
       ))}

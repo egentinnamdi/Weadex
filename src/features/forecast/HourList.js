@@ -22,7 +22,7 @@ function HourList() {
   const hourForecast = data.forecast.forecastday.at(0).hour.toSpliced(0, hour);
 
   return (
-    <StyledHourList>
+    <StyledHourList >
       <div>
         <h3>
           <FaRegClock /> hourly forecast

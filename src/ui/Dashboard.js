@@ -14,7 +14,7 @@ const StyledDashboard = styled.section`
 function Dashboard() {
   const {input}= useWeather()
   return (
-    <StyledDashboard className={`h-full ${ input.length < 3? "lg:col-span-2": ""}`}>
+    <StyledDashboard className={`min-h-screen lg:-h-full ${ input.length < 3? "lg:col-span-2": ""}`}>
       <SearchBar />
       <Loader>
         <Overview />

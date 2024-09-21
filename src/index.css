@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 /* @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"); */
 
 /* :root {
@@ -26,11 +27,11 @@
 
 @layer components{
     body {
-       @apply min-w-full min-h-screen bg-no-repeat ; 
+       @apply min-w-full min-h-screen bg-no-repeat  ; 
        background: url("/public/weadex-bg.jpg"); 
        background-size: cover;
        background-position: center;
        background-repeat: no-repeat;
-      font-family: "Montserrat", san-serif;
+      font-family: "Roboto", serif;
     } 
   }
